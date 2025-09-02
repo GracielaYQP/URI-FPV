@@ -1,0 +1,572 @@
+/* ===============================
+   Variables de diseño
+================================= */
+:root{
+  /* Layout */
+  --page-bg: #0b0b0f;
+  --section-bg: #0f0f0f;
+
+  /* Texto */
+  --text: #ffffff;
+  --muted: #e5e7eb;
+
+  /* Cards / bordes / sombras */
+  --card-bg: #121420;
+  --card-border: rgba(255,255,255,.06);
+  --card-shadow: 0 10px 30px rgba(0,0,0,.25);
+  --card-shadow-hover: 0 14px 40px rgba(0,0,0,.40);
+
+  /* Botón CTA */
+  --cta-from: #00e5ff;
+  --cta-to:   #00ffa3;
+
+  /* Social icons */
+  --icon-size: 46px;          /* diámetro círculo */
+  --glyph-size: 22px;         /* tamaño del símbolo */
+  --circle-bg: #e6e6e6;       /* gris claro */
+  --circle-bg-hover: #d7d7d7; /* gris hover */
+  --glyph: #0e0e0e;           /* color del logo */
+  --glyph-hover: #000000;     /* logo al hover */
+  --ring: rgba(255,255,255,.22);
+}
+
+/* ===============================
+   Reset mínimo
+================================= */
+:host { display: block; }
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--page-bg); color: var(--text); font-family: system-ui, Arial, sans-serif; }
+
+/* ===============================
+   Header fijo y elegante
+================================= */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 150px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px;
+  z-index: 50;
+  background: linear-gradient(180deg, rgba(18,17,17,.55), rgba(0,0,0,.25) 60%, rgba(0,0,0,0) 100%);
+  backdrop-filter: blur(6px);
+}
+
+.logo img {
+  width: 120px;
+  height: auto;
+  margin-top: 20px;
+  margin-left: 40px;
+}
+
+.nav ul {
+  margin: 0; padding: 0; list-style: none;
+  display: flex; gap: 20px;
+}
+.nav a {
+  color: #f3f4f6;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 999px;
+  transition: background .2s ease, color .2s ease, transform .1s ease;
+}
+.nav a:hover {
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* ===============================
+   Hero con video
+================================= */
+.hero-section {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding-top: 64px;  /* despeje header */
+  overflow: clip;
+}
+
+#bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -2;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(50% 60% at 50% 40%, rgba(0,0,0,.05), rgba(0,0,0,.35) 70%),
+    linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.55));
+  z-index: -1;
+}
+
+.hero-content {
+  text-align: center;
+  padding: 24px;
+  max-width: 840px;
+}
+.hero-content h1 {
+  font-size: clamp(36px, 6vw, 72px);
+  margin: 0 0 10px;
+  text-shadow: 0 10px 30px rgba(0,0,0,.75);
+  letter-spacing: .5px;
+}
+.hero-content p {
+  font-size: clamp(16px, 2.4vw, 22px);
+  margin: 0 0 20px;
+  color: var(--muted);
+  text-shadow: 0 6px 20px rgba(0,0,0,.6);
+}
+.cta-button {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--cta-from), var(--cta-to));
+  color: var(--page-bg);
+  border: none;
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 12px 30px rgba(0, 255, 163, .25);
+  transition: transform .12s ease, box-shadow .12s ease, filter .15s ease;
+}
+.cta-button:hover { transform: translateY(-2px); filter: brightness(1.05); }
+.cta-button:active { transform: translateY(0); }
+
+/* ===============================
+   Secciones base
+================================= */
+.drones-section, .videos-section, .servicios-fpv {
+  padding: 60px 20px;
+  text-align: center;
+  background: var(--section-bg);
+  color: var(--text);
+}
+.drones-section h1, .videos-section h1, .servicios-fpv h1 {
+  font-size: clamp(32px, 6vw, 60px);
+  margin-bottom: 20px;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+/* ===============================
+   Drones (grid)
+================================= */
+/* Grid de drones: tres columnas responsivas */
+.drone-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Tarjeta consistente en altura */
+.drone-card {
+  background: #121420;
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  display: flex;               /* para igualar alturas del contenido */
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.drone-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px rgba(0,0,0,.40);
+}
+
+/* Área de imagen con proporción fija para que todas queden iguales */
+.drone-media {
+  width: 100%;
+  aspect-ratio: 4 / 3;         /* cambiá a 16/9 o 1/1 si preferís */
+  overflow: hidden;
+}
+.drone-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;            /* llena el cuadro sin deformarse */
+  display: block;
+}
+
+/* Tipografía dentro de la card */
+.drone-card h3 {
+  text-align: center;
+  margin: 16px 16px 8px;
+  font-size: 22px;
+  color: #fff;
+}
+.drone-card p {
+  margin: 0 16px 18px;
+  color: #e5e7eb;
+  line-height: 1.6;
+}
+
+/* Si querés que NUNCA recorte las fotos (se vean completas),
+   cambiá 'object-fit: cover' por 'object-fit: contain' y poné un fondo: */
+.drone-media.img-contain img { 
+  object-fit: contain; 
+  background: #000; 
+}
+
+
+/* ===============================
+   Servicios (texto + grid)
+================================= */
+.servicios-fpv p {
+  max-width: 900px;
+  margin: 0 auto 16px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 800px){
+  .servicios-grid { grid-template-columns: 1fr; }
+}
+
+.servicios-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: var(--card-shadow);
+  text-align: left;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.servicios-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover);
+}
+.servicios-card img {
+  width: 100%;
+  max-height: 200px;    /* mostrás imagen completa sin deformar */
+  object-fit: contain;  /* cambiá a 'cover' si preferís que llene recortando */
+  background: #000;     /* relleno detrás si sobra espacio */
+  border-radius: 10px;
+  margin-bottom: 12px;
+  display: block;
+}
+.servicios-card h3 {
+  margin: 0 0 10px;
+  font-size: 22px;
+  color: #fff;
+}
+.servicios-card p {
+  margin: 0 0 12px;
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+
+/* === Contáctame centrado === */
+#contacto .container {
+  max-width: 1100px;        /* ancho máximo de toda la sección */
+  margin: 0 auto;           /* centra horizontalmente */
+  padding: 0 20px;          /* respiro lateral */
+}
+
+#contacto h2,
+#contacto .contact-intro {
+  text-align: center;       /* títulos y texto introductorio centrados */
+}
+
+/* Cards lado a lado (formulario + WhatsApp) */
+.contact-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(320px, 1fr));
+  gap: 28px;
+  align-items: start;
+  justify-content: center;  /* centra la grilla si sobra espacio */
+  max-width: 1100px;        /* asegura el centrado de la grilla */
+  margin: 0 auto;           /* centra la grilla dentro del container */
+}
+
+/* Estilo unificado de las 2 cards (si ya lo tenés, podés omitir) */
+.contact-form,
+.whatsapp-option {
+  background: #121420;
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+/* Inputs 100% ancho dentro del form (por si falta) */
+.contact-form .form-group { margin-bottom: 14px; }
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+}
+
+/* Responsive: en mobile pasar a 1 columna */
+@media (max-width: 900px) {
+  .contact-options {
+    grid-template-columns: 1fr;
+    max-width: 680px;
+  }
+}
+
+
+/* ===============================
+   Video embebido
+================================= */
+.video-container { display: grid; place-items: center; }
+.video-container iframe, .video-container video {
+  width: min(100%, 900px);
+  aspect-ratio: 16/9;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.35);
+}
+
+/* ===============================
+   Barra lateral de íconos
+   (Soporta <i class="fa..."> y SVG inline)
+================================= */
+
+
+/* Pop / Zoom suave */
+.side-social a,
+.footer-social a {
+  will-change: transform;
+}
+
+.side-social a:hover,
+.footer-social a:hover {
+  transform: translateY(-2px) scale(1.06);  /* leve levantada + zoom */
+}
+
+.side-social a:active,
+.footer-social a:active {
+  transform: translateY(0) scale(0.97);     /* feedback al click/tap */
+}
+
+/* Respeto a accesibilidad: sin animaciones si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+  .side-social a,
+  .footer-social a {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+.side-social {
+  position: fixed;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  gap: 14px;
+  z-index: 60;
+}
+.side-social a {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--circle-bg);
+  color: var(--glyph);
+  border: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 6px 18px rgba(0,0,0,.18);
+  transition: transform .18s ease, background .18s ease, box-shadow .18s ease, border-color .18s ease, color .18s ease;
+  text-decoration: none;
+}
+/* FA */
+.side-social a i { font-size: var(--glyph-size); line-height: 1; }
+/* SVG */
+.side-social a svg { width: var(--glyph-size); height: var(--glyph-size); display:block; fill: currentColor; }
+
+.side-social a:hover,
+.side-social a:focus-visible {
+  background: var(--circle-bg-hover);
+  transform: translateY(-2px);
+  border-color: rgba(0,0,0,.16);
+  box-shadow: 0 10px 26px rgba(0,0,0,.28), 0 0 0 4px var(--ring);
+  color: var(--glyph-hover);
+  outline: none;
+}
+.side-social a:active { transform: translateY(0); box-shadow: 0 6px 18px rgba(0,0,0,.2); }
+
+@media (max-width: 640px){
+  :root{ --icon-size: 42px; --glyph-size: 20px; }
+  .side-social { left: 10px; gap: 12px; }
+}
+
+
+/* ===== Colores por marca (hover/active/focus-visible) ===== */
+/* Instagram */
+.side-social a[data-brand="ig"]:hover,
+.footer-social a[data-brand="ig"]:hover,
+.side-social a[data-brand="ig"]:active,
+.footer-social a[data-brand="ig"]:active,
+.side-social a[data-brand="ig"]:focus-visible,
+.footer-social a[data-brand="ig"]:focus-visible {
+  background: #E4405F;           /* rosa/rojo IG */
+  color: #fff;
+  border-color: rgba(228,64,95,.6);
+  box-shadow: 0 10px 26px rgba(228,64,95,.35), 0 0 0 4px rgba(228,64,95,.15);
+}
+
+/* WhatsApp */
+.side-social a[data-brand="wa"]:hover,
+.footer-social a[data-brand="wa"]:hover,
+.side-social a[data-brand="wa"]:active,
+.footer-social a[data-brand="wa"]:active,
+.side-social a[data-brand="wa"]:focus-visible,
+.footer-social a[data-brand="wa"]:focus-visible {
+  background: #25D366;           /* verde WA */
+  color: #fff;
+  border-color: rgba(37,211,102,.6);
+  box-shadow: 0 10px 26px rgba(37,211,102,.35), 0 0 0 4px rgba(37,211,102,.15);
+}
+
+/* Facebook */
+.side-social a[data-brand="fb"]:hover,
+.footer-social a[data-brand="fb"]:hover,
+.side-social a[data-brand="fb"]:active,
+.footer-social a[data-brand="fb"]:active,
+.side-social a[data-brand="fb"]:focus-visible,
+.footer-social a[data-brand="fb"]:focus-visible {
+  background: #1877F2;           /* azul FB */
+  color: #fff;
+  border-color: rgba(24,119,242,.6);
+  box-shadow: 0 10px 26px rgba(24,119,242,.35), 0 0 0 4px rgba(24,119,242,.15);
+}
+
+/* LinkedIn */
+.side-social a[data-brand="li"]:hover,
+.footer-social a[data-brand="li"]:hover,
+.side-social a[data-brand="li"]:active,
+.footer-social a[data-brand="li"]:active,
+.side-social a[data-brand="li"]:focus-visible,
+.footer-social a[data-brand="li"]:focus-visible {
+  background: #0A66C2;           /* azul LI */
+  color: #fff;
+  border-color: rgba(10,102,194,.6);
+  box-shadow: 0 10px 26px rgba(10,102,194,.35), 0 0 0 4px rgba(10,102,194,.15);
+}
+
+/* Email (Gmail-ish) */
+.side-social a[data-brand="mail"]:hover,
+.footer-social a[data-brand="mail"]:hover,
+.side-social a[data-brand="mail"]:active,
+.footer-social a[data-brand="mail"]:active,
+.side-social a[data-brand="mail"]:focus-visible,
+.footer-social a[data-brand="mail"]:focus-visible {
+  background: #EA4335;           /* rojo Google */
+  color: #fff;
+  border-color: rgba(234,67,53,.6);
+  box-shadow: 0 10px 26px rgba(234,67,53,.35), 0 0 0 4px rgba(234,67,53,.15);
+}
+
+
+/* ===============================
+   Footer + íconos centrados
+================================= */
+.footer {
+  text-align: center;
+  padding: 24px;
+  border-top: 1px solid rgba(255,255,255,.06);
+  color: #cbd5e1;
+  background: linear-gradient(180deg, rgba(18,17,17,.55), rgba(0,0,0,.25) 60%, rgba(0,0,0,0) 100%);
+  backdrop-filter: blur(6px);
+}
+.footer-social {
+  display: inline-flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.footer-social a {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--circle-bg);
+  color: var(--glyph);
+  border: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 6px 18px rgba(0,0,0,.18);
+  transition: transform .18s ease, background .18s ease, box-shadow .18s ease, border-color .18s ease, color .18s ease;
+  text-decoration: none;
+}
+
+/* Hover de marca SOLO para LinkedIn (opcional) */
+.side-social a[data-brand="li"]:hover,
+.footer-social a[data-brand="li"]:hover {
+  background: #0A66C2;             /* azul LinkedIn */
+  color: #ffffff;                   /* icono blanco */
+  border-color: rgba(10,102,194,.6);
+  box-shadow: 0 10px 26px rgba(10,102,194,.35), 0 0 0 4px rgba(10,102,194,.15);
+}
+
+/* FA */
+.footer-social a i { font-size: var(--glyph-size); line-height: 1; }
+/* SVG */
+.footer-social a svg { width: var(--glyph-size); height: var(--glyph-size); display:block; fill: currentColor; }
+
+.footer-social a:hover,
+.footer-social a:focus-visible {
+  background: var(--circle-bg-hover);
+  transform: translateY(-2px);
+  border-color: rgba(0,0,0,.16);
+  box-shadow: 0 10px 26px rgba(0,0,0,.28), 0 0 0 4px var(--ring);
+  color: var(--glyph-hover);
+  outline: none;
+}
+.footer-social a:active { transform: translateY(0); box-shadow: 0 6px 18px rgba(0,0,0,.2); }
+
+/* ===== Animaciones de entrada (fade + slide) ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .6s ease, transform .6s ease;
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Variantes opcionales: slide desde izquierda/derecha */
+.reveal-left   { transform: translateX(-20px); }
+.reveal-right  { transform: translateX(20px);  }
+.reveal-left.is-visible,
+.reveal-right.is-visible { transform: none; }
+
+/* Stagger simple con nth-child (aplica a grillas/listas) */
+.drone-grid .reveal:nth-child(1),
+.servicios-grid .reveal:nth-child(1) { transition-delay: .0s; }
+.drone-grid .reveal:nth-child(2),
+.servicios-grid .reveal:nth-child(2) { transition-delay: .08s; }
+.drone-grid .reveal:nth-child(3),
+.servicios-grid .reveal:nth-child(3) { transition-delay: .16s; }
+.drone-grid .reveal:nth-child(4),
+.servicios-grid .reveal:nth-child(4) { transition-delay: .24s; }
+
+/* Sidebar / Footer: que entren desde el costado */
+.side-social a.reveal     { transform: translateX(-14px); }
+.footer-social a.reveal   { transform: translateY(12px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.is-visible { transition: none; transform: none; opacity: 1; }
+}

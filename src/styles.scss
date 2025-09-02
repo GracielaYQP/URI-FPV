@@ -1,1 +1,424 @@
-/* You can add global styles to this file, and also import other style files */
+/* ===== Tema base ===== */
+:root{
+  --bg: #0b1220;
+  --overlay-1: rgba(8, 14, 26, .25);
+  --overlay-2: rgba(8, 14, 26, .75);
+  --text: #e6edf6;
+  --muted: #9fb0c6;
+  --accent: #00e5ff;
+  --accent-2: #6cffb3;
+  --card: rgba(255,255,255,.07);
+  --border: rgba(255,255,255,.12);
+}
+
+*{ box-sizing: border-box; }
+html,body{ height:100%; scroll-behavior:smooth; }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* ===== Video de fondo ===== */
+#bg-video{
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.video-overlay{
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(1200px 700px at 50% 20%, var(--overlay-1), transparent 60%),
+    linear-gradient(to bottom, var(--overlay-2), rgba(0,0,0,.35));
+  backdrop-filter: blur(1px);
+  z-index: -1;
+}
+
+/* ===== Header ===== */
+.site-header{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 28px;
+  background: rgba(10,16,28,.35);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+.brand{ font-weight: 800; letter-spacing:.5px; }
+.site-nav a{
+  color: var(--text);
+  text-decoration: none;
+  margin-left: 20px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  transition: 150ms;
+}
+.site-nav a:hover{
+  background: rgba(255,255,255,.08);
+  color: var(--accent);
+}
+
+/* ===== Hero ===== */
+.hero{
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 80px 16px 40px;   /* 80 para despegar del header */
+}
+.hero h1{
+  margin: 0 0 8px;
+  font-size: clamp(32px, 6vw, 56px);
+  text-shadow: 0 6px 30px rgba(0,0,0,.55);
+}
+.hero p{
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: clamp(16px, 2.5vw, 20px);
+}
+.btn{
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 0; cursor: pointer; font-weight: 700; text-decoration: none;
+  border-radius: 999px; padding: 12px 22px; transition: transform .12s ease, box-shadow .12s ease;
+}
+.btn-primary{
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #05121f;
+  box-shadow: 0 10px 30px rgba(0, 229, 255, .25);
+}
+.btn-primary:hover{ transform: translateY(-2px); }
+
+/* ===== Secciones ===== */
+.section{
+  padding: 72px 20px;
+  backdrop-filter: blur(1px);
+}
+.section--alt{
+  background: linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.35));
+}
+.section-title{
+  text-align: center;
+  margin: 0 0 28px;
+  font-size: clamp(28px, 4vw, 40px);
+}
+
+/* Grid y tarjetas */
+.grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px 18px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.25);
+  text-align: center;
+}
+.card h3{ margin: 6px 0 8px; }
+.card p{ margin: 0; color: var(--muted); }
+
+/* Videos (YouTube embed) */
+.video-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 22px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.yt{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 14px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.35);
+}
+
+/* ===== Footer ===== */
+.site-footer{
+  text-align: center;
+  padding: 28px 16px 40px;
+  color: var(--muted);
+}
+.drone-card img {
+  width: 100%; /* La imagen ocupa el 100% del ancho del contenedor */
+  height: auto; /* La altura se ajusta automáticamente para mantener la proporción */
+  display: block; /* Elimina el espacio extra debajo de la imagen */
+  border-radius: 8px; /* Opcional: añade bordes redondeados */
+  margin-bottom: 1rem; /* Opcional: espacio debajo de la imagen */
+}
+
+/* Estilos generales de la sección de contacto */
+#contacto {
+    padding: 60px 0;
+    background-color: #1a1a1a; /* Fondo oscuro para contrastar */
+    color: #f0f0f0;
+    text-align: center;
+}
+
+#contacto h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #00bcd4; /* Color de tu marca o un azul brillante */
+}
+
+.contact-intro {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+/* Contenedor para que el formulario y WhatsApp estén lado a lado */
+.contact-options {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    gap: 40px; /* Espacio entre el formulario y el WhatsApp */
+    justify-content: center;
+    align-items: flex-start; /* Alinea los elementos en la parte superior */
+    margin-top: 40px;
+}
+
+/* Estilos del formulario */
+.contact-form {
+    background-color: #2a2a2a;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    flex: 1; /* Permite que el formulario ocupe el espacio disponible */
+    min-width: 300px; /* Ancho mínimo para el formulario */
+    max-width: 500px; /* Ancho máximo para el formulario */
+    text-align: left; /* Alinea el texto del formulario a la izquierda */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #f0f0f0;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #333;
+    color: #f0f0f0;
+    font-size: 1rem;
+    box-sizing: border-box; /* Incluye padding y border en el width */
+}
+
+.contact-form input[type="text"]::placeholder,
+.contact-form input[type="email"]::placeholder,
+.contact-form textarea::placeholder {
+    color: #bbb;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: #00bcd4; /* Borde al enfocar */
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 188, 212, 0.3);
+}
+
+.submit-button {
+    background-color: #00bcd4;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Ocupa todo el ancho */
+}
+
+.submit-button:hover {
+    background-color: #0097a7;
+}
+
+/* Estilos de la opción de WhatsApp */
+/* Estilos para la sección de contacto */
+#contacto {
+    padding: 60px 0;
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    text-align: center;
+}
+
+#contacto .container {
+    max-width: 900px;
+}
+
+#contacto h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #00bcd4;
+}
+
+.contact-intro {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.contact-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.contact-form {
+    background-color: #2a2a2a;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #f0f0f0;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #333;
+    color: #f0f0f0;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.contact-form input[type="text"]::placeholder,
+.contact-form input[type="email"]::placeholder,
+.contact-form textarea::placeholder {
+    color: #bbb;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: #00bcd4;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 188, 212, 0.3);
+}
+
+.submit-button {
+    background-color: #00bcd4;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.submit-button:hover {
+    background-color: #0097a7;
+}
+
+/* Estilos para el botón de WhatsApp */
+.whatsapp-option {
+    background-color: #2a2a2a;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.whatsapp-option h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #00bcd4;
+}
+
+.whatsapp-option p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.whatsapp-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: #25d366;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.whatsapp-button:hover {
+    background-color: #1da851;
+}
+
+.whatsapp-button img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    /* Esta es la parte clave: esta línea invertirá el color. Si tu logo ya es blanco, coméntala. */
+    /* filter: brightness(0) invert(1); */ 
+}
+
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .contact-options {
+        flex-direction: column;
+        align-items: center;
+    }
+    .contact-form, .whatsapp-option {
+        max-width: 90%;
+        width: 100%;
+    }
+}
