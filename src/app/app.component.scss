@@ -239,6 +239,16 @@ body { margin: 0; background: var(--page-bg); color: var(--text); font-family: s
   .servicios-grid { grid-template-columns: 1fr; }
 }
 
+
+.media-card {
+  width: 100%;
+  aspect-ratio: 16 / 9;   /* usá 9/16 si tu video es vertical */
+  object-fit: cover;      /* recorta como una imagen de fondo */
+  border-radius: 12px;
+  display: block;
+  background: #000;
+}
+
 .servicios-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);

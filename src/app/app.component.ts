@@ -56,6 +56,11 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     });
   }
 
+  ensureMuted(video: HTMLVideoElement) {
+  video.muted = true;
+  video.volume = 0;
+}
+
   ngOnDestroy(): void {
     this.heroObserver?.disconnect();
     this.revealObserver?.disconnect();
