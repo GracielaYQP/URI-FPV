@@ -25,7 +25,7 @@
     <ul>
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#drones">Drones</a></li>
-      <li><a href="#servicios">Servicios</a></li> 
+      <li><a href="#servicios">Servicios</a></li>
       <li><a href="#videos">Videos</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
@@ -33,6 +33,7 @@
 </header>
 
 <main class="main-content">
+  <!-- ===== Hero ===== -->
   <section id="inicio" class="hero-section">
     <video #bgVideo id="bg-video" autoplay muted loop playsinline preload="auto" poster="assets/img/cover.jpg">
       <source src="assets/videos/video-rally-1.mp4" type="video/mp4" />
@@ -47,6 +48,7 @@
     </div>
   </section>
 
+  <!-- ===== Drones ===== -->
   <section id="drones" class="drones-section">
     <div class="container">
       <h1 class="reveal">Mis drones</h1>
@@ -59,8 +61,8 @@
           </div>
           <h3>Drone 1</h3>
           <p>
-            Quad de <strong>5”</strong> ideal para tomas dinámicas al aire libre. 
-            Monta <strong>GoPro</strong> y ofrece gran estabilidad a alta velocidad. 
+            Quad de <strong>5”</strong> ideal para tomas dinámicas al aire libre.
+            Monta <strong>GoPro</strong> y ofrece gran estabilidad a alta velocidad.
             Perfecto para <em>follow cams</em>, deportes y acción.
           </p>
         </article>
@@ -72,7 +74,7 @@
           </div>
           <h3>Drone 2</h3>
           <p>
-            <strong>Cinewhoop 3”</strong> con protectores de hélice, pensado para <strong>interiores</strong>. 
+            <strong>Cinewhoop 3”</strong> con protectores de hélice, pensado para <strong>interiores</strong>.
             Vuelos seguros cerca de personas, movimientos suaves y <em>fly-throughs</em> de película.
           </p>
         </article>
@@ -84,7 +86,7 @@
           </div>
           <h3>Drone 3</h3>
           <p>
-            <strong>Micro FPV</strong> ultra ligero para espacios reducidos y planos creativos. 
+            <strong>Micro FPV</strong> ultra ligero para espacios reducidos y planos creativos.
             Agilidad máxima, ideal para <strong>publicidad, eventos</strong> y recorridos precisos.
           </p>
         </article>
@@ -97,109 +99,168 @@
     <div class="servicios-content">
       <h1 class="reveal">Servicios de Drones FPV</h1>
       <p class="reveal">
-        Con más de 8 años de experiencia en vuelos FPV, he recorrido todo el espectro de la producción audiovisual: 
-        desde rodajes pequeños hasta grandes producciones de nivel profesional en diferentes campos, tanto deportivos como empresariales. 
-        A lo largo de este tiempo he perfeccionado no solo la técnica de vuelo, 
+        Con más de 8 años de experiencia en vuelos FPV, he recorrido todo el espectro de la producción audiovisual:
+        desde rodajes pequeños hasta grandes producciones de nivel profesional en diferentes campos, tanto deportivos como empresariales.
+        A lo largo de este tiempo he perfeccionado no solo la técnica de vuelo,
         sino también el arte de conseguir encuadres únicos que hacen la diferencia en cada proyecto.
       </p>
       <p class="reveal">
-        Puedo aportar todo el equipamiento necesario para una experiencia de rodaje fluida y profesional: 
-        monitores de previsualización, enlaces descendentes en HD, transmisiones hacia VTR/videoteca 
-        y reproducción en vivo. Cuento con drones FPV de diferentes dimensiones para cubrir 
+        Puedo aportar todo el equipamiento necesario para una experiencia de rodaje fluida y profesional:
+        monitores de previsualización, enlaces descendentes en HD, transmisiones hacia VTR/videoteca
+        y reproducción en vivo. Cuento con drones FPV de diferentes dimensiones para cubrir
         cualquier tipo de producción y adaptarme a tus ideas más ambiciosas.
       </p>
       <p class="reveal">
-        Con mi equipo, no solo tendrás un vuelo preciso, sino también un resultado visual que hará realidad 
+        Con mi equipo, no solo tendrás un vuelo preciso, sino también un resultado visual que hará realidad
         tus conceptos más creativos.
       </p>
     </div>
 
     <h1 class="reveal">Servicios FPV</h1>
+
     <div class="servicios-grid">
+      <!-- 1) Televisión en vivo y transmisiones -->
       <article class="servicios-card reveal">
-        <img src="assets/img/fotouri.jpeg" alt="Imagen piloto 1">
+        <video
+          class="media-card"
+          autoplay
+          loop
+          playsinline
+          preload="metadata"
+          poster="assets/img/fotouri.jpeg"
+          muted
+          defaultMuted
+          onplay="this.muted=true; this.volume=0">
+          <source src="assets/videos/video-rally-1.mp4" type="video/mp4" />
+        </video>
+
         <h3>Televisión en vivo y transmisiones</h3>
-        <p>
-          ¿Querés que transmita en vivo la señal FPV directamente?  
-          Con mi dron personalizado puedo ofrecerte transmisiones en vivo en <strong>SDI</strong> o <strong>HDMI</strong> desde una perspectiva única.
-        </p>
-        <p>
-          Cuento con drones pequeños, seguros para usar en espacios con mucha gente, así como configuraciones más grandes con cámaras de alta gama.
-        </p>
-        <p>
-          Mi flujo de trabajo te garantiza una señal directa con <strong>mínima pérdida de latencia</strong>, lista para cualquier tipo de producción.
-        </p>
+        <p>¿Querés que transmita en vivo la señal FPV directamente?
+           Con mi dron personalizado puedo ofrecerte transmisiones en vivo en <strong>SDI</strong> o <strong>HDMI</strong> desde una perspectiva única.</p>
+        <p>Cuento con drones pequeños, seguros para usar en espacios con mucha gente, así como configuraciones más grandes con cámaras de alta gama.</p>
+        <p>Mi flujo de trabajo te garantiza una señal directa con <strong>mínima pérdida de latencia</strong>, lista para cualquier tipo de producción.</p>
+
+        <button class="btn-ver-mas"
+                (click)="abrirGaleria('television','Televisión en vivo y transmisiones')">
+          Ver más videos
+        </button>
       </article>
 
+      <!-- 2) Tours con drones en interiores -->
       <article class="servicios-card reveal">
-        <img src="assets/img/fotouri.jpeg" alt="Minidron en interiores">
+        <video
+          class="media-card"
+          autoplay
+          loop
+          playsinline
+          preload="metadata"
+          poster="assets/img/fotouri.jpeg"
+          muted
+          defaultMuted
+          onplay="this.muted=true; this.volume=0">
+          <!-- usamos uno de los interiores como destacado -->
+          <source src="assets/videos/video-interior-1.mp4" type="video/mp4" />
+        </video>
+
         <h3>Tours con drones en interiores</h3>
-        <p>
-          ¿Querés que el espectador se conecte con tu nueva ubicación o preferís contar una historia desde otra perspectiva?  
-          Para grabaciones en lugares cerrados, cuento con <strong>tours de drones en interiores</strong>.
-        </p>
-        <p>
-          Mis minidrones personalizados pueden volar en cualquier espacio que necesites registrar.  
-          Gracias a los protectores de hélice, puedo acercarme a las personas sin ponerlas en riesgo y lograr tomas únicas con total seguridad.
-        </p>
+        <p>¿Querés que el espectador se conecte con tu nueva ubicación o preferís contar una historia desde otra perspectiva?
+           Para grabaciones en lugares cerrados, cuento con <strong>tours de drones en interiores</strong>.</p>
+        <p>Mis minidrones personalizados pueden volar en cualquier espacio que necesites registrar.
+           Gracias a los protectores de hélice, puedo acercarme a las personas sin ponerlas en riesgo y lograr tomas únicas con total seguridad.</p>
+
+        <button class="btn-ver-mas"
+                (click)="abrirGaleria('tours','Tours con drones en interiores')">
+          Ver más videos
+        </button>
       </article>
 
+      <!-- 3) Comerciales -->
       <article class="servicios-card reveal">
-  <video
-    class="media-card"
-    autoplay
-    loop
-    playsinline
-    preload="metadata"
-    poster="assets/img/fotouri.jpeg"
-    muted
-    defaultMuted
-    onplay="this.muted=true; this.volume=0">
-    <source src="assets/videos/video-fabrica-1.mp4" type="video/mp4" />
-    Tu navegador no soporta la etiqueta de video.
-  </video>
+        <video
+          class="media-card"
+          autoplay
+          loop
+          playsinline
+          preload="metadata"
+          poster="assets/img/fotouri.jpeg"
+          muted
+          defaultMuted
+          onplay="this.muted=true; this.volume=0">
+          <source src="assets/videos/video-fabrica-1.mp4" type="video/mp4" />
+        </video>
 
-  <h3>Comerciales</h3>
-  <p>
-    ¿Necesitás un video para promocionar tu empresa o preferís aprovechar una perspectiva única para uso interno?  
-    Los drones FPV se han convertido en una herramienta clave en la producción de videos comerciales.
-  </p>
-  <p>
-    Con ellos puedo conectar distintas ubicaciones, guiar al espectador en un recorrido inmersivo  
-    o incluso combinar tomas aéreas con imágenes cámara en mano, logrando piezas dinámicas y memorables.
-  </p>
-</article>
+        <h3>Comerciales</h3>
+        <p>¿Necesitás un video para promocionar tu empresa o preferís aprovechar una perspectiva única para uso interno?
+           Los drones FPV se han convertido en una herramienta clave en la producción de videos comerciales.</p>
+        <p>Con ellos puedo conectar distintas ubicaciones, guiar al espectador en un recorrido inmersivo
+           o incluso combinar tomas aéreas con imágenes cámara en mano, logrando piezas dinámicas y memorables.</p>
 
-<article class="servicios-card reveal">
-  <video
-  class="media-card"
-  autoplay
-  loop
-  playsinline
-  preload="metadata"
-  poster="assets/img/fotouri.jpeg"
-  muted
-  defaultMuted
-  onplay="this.muted=true; this.volume=0">
-  <source src="assets/videos/video-boliche-1.mp4" type="video/mp4" />
-  Tu navegador no soporta la etiqueta de video.
-</video>
+        <button class="btn-ver-mas"
+                (click)="abrirGaleria('comerciales','Comerciales')">
+          Ver más videos
+        </button>
+      </article>
 
-  <h3>Festivales y Eventos</h3>
-  <p>
-    Con una importante cantidad de festivales y eventos filmados en los últimos años,  
-    tengo una amplia experiencia en este tipo de producciones.
-  </p>
-  <p>
-    Los festivales requieren un enfoque especial por la gestión de riesgos,  
-    y suelo trabajar la preproducción de cada evento para asegurar las mejores tomas  
-    manteniendo siempre un alto nivel de seguridad.
-  </p>
-</article>
+      <!-- 4) Festivales y Eventos -->
+      <article class="servicios-card reveal">
+        <video
+          class="media-card"
+          autoplay
+          loop
+          playsinline
+          preload="metadata"
+          poster="assets/img/fotouri.jpeg"
+          muted
+          defaultMuted
+          onplay="this.muted=true; this.volume=0">
+          <source src="assets/videos/mi-video-FPV.mp4" type="video/mp4" />
+        </video>
 
+        <h3>Festivales y Eventos</h3>
+        <p>Con una importante cantidad de festivales y eventos filmados en los últimos años, tengo una amplia experiencia en este tipo de producciones.</p>
+        <p>Los festivales requieren un enfoque especial por la gestión de riesgos, y suelo trabajar la preproducción de cada evento para asegurar las mejores tomas manteniendo siempre un alto nivel de seguridad.</p>
+
+        <button class="btn-ver-mas"
+                (click)="abrirGaleria('festivales','Festivales y Eventos')">
+          Ver más videos
+        </button>
+      </article>
     </div>
   </section>
 
+  <!-- ===== Modal (colocado FUERA del grid de servicios) ===== -->
+  <section class="modal-overlay" *ngIf="modalAbierto" (click)="cerrarModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="modal-close" (click)="cerrarModal()">×</button>
+    <h3 class="modal-title">Más videos de {{ galeriaTitulo }}</h3>
+
+    <div class="galeria-videos">
+      <div class="galeria-item-wrap"
+           *ngFor="let v of galeriaActual"
+           #wrap
+           (click)="abrirEnPantallaCompleta(wrap, vid)">
+        <video #vid
+               class="galeria-item"
+               [attr.poster]="v.poster || 'assets/img/fotouri.jpeg'"
+               muted playsinline preload="metadata" loop
+               (mouseenter)="($any($event.target)).play()"
+               (mouseleave)="($any($event.target)).pause()">
+          <source [src]="v.src" type="video/mp4" />
+        </video>
+
+        <!-- Botón visible SOLO en fullscreen -->
+        <button type="button"
+                class="fs-exit"
+                (click)="salirPantallaCompleta($event)">
+          Salir
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- ===== Sección Videos ===== -->
   <section id="videos" class="videos-section">
     <h1 class="reveal">Mis últimas filmaciones</h1>
     <div class="video-container reveal">
@@ -210,6 +271,7 @@
     </div>
   </section>
 
+  <!-- ===== Contacto ===== -->
   <section id="contacto" class="section">
     <div class="container">
       <h2 class="reveal">Contáctame</h2>
@@ -245,7 +307,7 @@
   </section>
 </main>
 
-<!-- ===== Footer con íconos centrados ===== -->
+<!-- ===== Footer ===== -->
 <footer class="footer">
   <div class="footer-social">
     <a class="reveal" href="https://instagram.com/urisegall.fpv" target="_blank" rel="noopener" aria-label="Instagram" data-brand="ig">
