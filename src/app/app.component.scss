@@ -232,6 +232,32 @@ body {
   pointer-events: auto;
 }
 
+.fs-top {
+  position: absolute;
+  top: 10px;
+  right: 90px; /* a la izquierda del botón Salir */
+  padding: 6px 10px;
+  font-weight: 700;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(0,0,0,.6);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(0,0,0,.35);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease, background .2s ease;
+}
+.fs-top:hover { transform: translateY(-1px); background: rgba(0,0,0,.7); }
+
+/* Mostrarlos solo en fullscreen */
+.galeria-item-wrap:fullscreen .fs-exit,
+.galeria-item-wrap:fullscreen .fs-top {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
 /* El video en fullscreen ocupa toda la pantalla sin deformarse (con franjas si hace falta) */
 .galeria-item-wrap:fullscreen .galeria-item{
   width: 100vw;

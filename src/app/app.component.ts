@@ -158,6 +158,20 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   document.addEventListener('fullscreenchange', onFsChange);
 }
 
+
+irAlInicio(ev: Event) {
+  ev.stopPropagation(); // evita que dispare abrir fullscreen de nuevo
+  if (document.fullscreenElement && document.exitFullscreen) {
+    // primero salimos del fullscreen, después scrolleamos
+    document.exitFullscreen().finally(() =>
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    );
+  } else {
+    // si no está fullscreen, igual lo manda arriba
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
 // Botón "Salir" (dentro de fullscreen)
 salirPantallaCompleta(ev: Event) {
   ev.stopPropagation(); // que no vuelva a abrir FS por el click en el wrapper
