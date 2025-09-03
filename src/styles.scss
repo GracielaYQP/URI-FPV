@@ -9,6 +9,7 @@
   --accent-2: #6cffb3;
   --card: rgba(255,255,255,.07);
   --border: rgba(255,255,255,.12);
+  --header-h: 150px;
 }
 
 *{ box-sizing: border-box; }
@@ -20,69 +21,8 @@ body{
   background: var(--bg);
 }
 
-/* ===== Video de fondo ===== */
-#bg-video{
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -2;
-}
-
-.video-overlay{
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(1200px 700px at 50% 20%, var(--overlay-1), transparent 60%),
-    linear-gradient(to bottom, var(--overlay-2), rgba(0,0,0,.35));
-  backdrop-filter: blur(1px);
-  z-index: -1;
-}
-
-/* ===== Header ===== */
-.site-header{
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 28px;
-  background: rgba(10,16,28,.35);
-  border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(10px);
-  z-index: 10;
-}
 .brand{ font-weight: 800; letter-spacing:.5px; }
-.site-nav a{
-  color: var(--text);
-  text-decoration: none;
-  margin-left: 20px;
-  padding: 6px 10px;
-  border-radius: 12px;
-  transition: 150ms;
-}
-.site-nav a:hover{
-  background: rgba(255,255,255,.08);
-  color: var(--accent);
-}
 
-/* ===== Hero ===== */
-.hero{
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 80px 16px 40px;   /* 80 para despegar del header */
-}
-.hero h1{
-  margin: 0 0 8px;
-  font-size: clamp(32px, 6vw, 56px);
-  text-shadow: 0 6px 30px rgba(0,0,0,.55);
-}
-.hero p{
-  margin: 0 0 18px;
-  color: var(--muted);
-  font-size: clamp(16px, 2.5vw, 20px);
-}
 .btn{
   display: inline-flex; align-items: center; justify-content: center;
   border: 0; cursor: pointer; font-weight: 700; text-decoration: none;
@@ -98,6 +38,7 @@ body{
 /* ===== Secciones ===== */
 .section{
   padding: 72px 20px;
+  -webkit-backdrop-filter: blur(1px);
   backdrop-filter: blur(1px);
 }
 .section--alt{
@@ -150,58 +91,6 @@ body{
   padding: 28px 16px 40px;
   color: var(--muted);
 }
-.drone-card img {
-  width: 100%; /* La imagen ocupa el 100% del ancho del contenedor */
-  height: auto; /* La altura se ajusta automáticamente para mantener la proporción */
-  display: block; /* Elimina el espacio extra debajo de la imagen */
-  border-radius: 8px; /* Opcional: añade bordes redondeados */
-  margin-bottom: 1rem; /* Opcional: espacio debajo de la imagen */
-}
-
-/* Estilos generales de la sección de contacto */
-#contacto {
-    padding: 60px 0;
-    background-color: #1a1a1a; /* Fondo oscuro para contrastar */
-    color: #f0f0f0;
-    text-align: center;
-}
-
-#contacto h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #00bcd4; /* Color de tu marca o un azul brillante */
-}
-
-.contact-intro {
-    font-size: 1.1rem;
-    margin-bottom: 40px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
-}
-
-/* Contenedor para que el formulario y WhatsApp estén lado a lado */
-.contact-options {
-    display: flex;
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
-    gap: 40px; /* Espacio entre el formulario y el WhatsApp */
-    justify-content: center;
-    align-items: flex-start; /* Alinea los elementos en la parte superior */
-    margin-top: 40px;
-}
-
-/* Estilos del formulario */
-.contact-form {
-    background-color: #2a2a2a;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    flex: 1; /* Permite que el formulario ocupe el espacio disponible */
-    min-width: 300px; /* Ancho mínimo para el formulario */
-    max-width: 500px; /* Ancho máximo para el formulario */
-    text-align: left; /* Alinea el texto del formulario a la izquierda */
-}
 
 .form-group {
     margin-bottom: 20px;
@@ -224,7 +113,7 @@ body{
     background-color: #333;
     color: #f0f0f0;
     font-size: 1rem;
-    box-sizing: border-box; /* Incluye padding y border en el width */
+    box-sizing: border-box; 
 }
 
 .contact-form input[type="text"]::placeholder,
@@ -236,7 +125,7 @@ body{
 .contact-form input[type="text"]:focus,
 .contact-form input[type="email"]:focus,
 .contact-form textarea:focus {
-    border-color: #00bcd4; /* Borde al enfocar */
+    border-color: #00bcd4; 
     outline: none;
     box-shadow: 0 0 0 2px rgba(0, 188, 212, 0.3);
 }
@@ -407,8 +296,6 @@ body{
     width: 24px;
     height: 24px;
     margin-right: 10px;
-    /* Esta es la parte clave: esta línea invertirá el color. Si tu logo ya es blanco, coméntala. */
-    /* filter: brightness(0) invert(1); */ 
 }
 
 /* Media Queries para pantallas más pequeñas */

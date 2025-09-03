@@ -234,7 +234,7 @@
         <div class="whatsapp-option reveal">
           <h3>O comunícate por WhatsApp</h3>
           <p>¿Prefieres una respuesta más rápida? Escríbeme directamente:</p>
-          <a href="https://wa.me/5493541602266" target="_blank" class="whatsapp-button">
+          <a href="https://wa.me/5493541602266" target="_blank" rel="noopener noreferrer" class="whatsapp-button">
             <img src="assets/img/whatsapp-logo.png" alt="Logo de WhatsApp">
             <span>Chatear por WhatsApp</span>
           </a>
@@ -267,3 +267,36 @@
 
   <p>&copy; 2025 URI.FPV. Todos los derechos reservados.</p>
 </footer>
+
+  <script>
+    (function(){
+      const header = document.querySelector('.header');
+      const hero   = document.querySelector('.hero-section'); // tu sección del video
+
+      function syncHeaderVar(){
+        if (!header) return;
+        const h = header.offsetHeight;
+        document.documentElement.style.setProperty('--header-h', h + 'px');
+      }
+      syncHeaderVar();
+      window.addEventListener('resize', syncHeaderVar);
+
+      if (header && hero && 'IntersectionObserver' in window){
+        const io = new IntersectionObserver(([entry])=>{
+          if (entry.isIntersecting){
+            header.classList.remove('header--solid');   // sobre el video → transparente
+          } else {
+            header.classList.add('header--solid');      // fuera del hero → sólido con blur
+          }
+        }, { rootMargin: '-40px 0px 0px 0px', threshold: 0.01 });
+        io.observe(hero);
+      } else {
+        window.addEventListener('scroll', ()=>{
+          (window.scrollY > 10)
+            ? header.classList.add('header--solid')
+            : header.classList.remove('header--solid');
+        });
+      }
+    })();
+  </script>
+

@@ -41,22 +41,47 @@ body { margin: 0; background: var(--page-bg); color: var(--text); font-family: s
 /* ===============================
    Header fijo y elegante
 ================================= */
-.header {
+.header{
+  --pad-x: 28px;
   position: fixed;
   top: 0; left: 0; right: 0;
-  height: 150px;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 24px;
-  z-index: 50;
-  background: linear-gradient(180deg, rgba(18,17,17,.55), rgba(0,0,0,.25) 60%, rgba(0,0,0,0) 100%);
-  backdrop-filter: blur(6px);
+  padding: 14px var(--pad-x);
+  background: transparent;                 /* transparente por defecto */
+  border-bottom: 1px solid transparent;    /* sin borde inicial */
+  z-index: 10;
+  transition: background .25s ease, border-color .25s ease, backdrop-filter .25s ease;
+}
+
+.header.header--solid{
+  background: rgba(10,16,28,.45);          /* sólido con blur fuera del hero */
+  border-bottom-color: var(--border);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.main-content { 
+  padding-top: var(--header-h);
+}
+
+section[id] { 
+  scroll-margin-top: calc(var(--header-h) + 12px);
+}
+
+.section-title, 
+#drones h1, 
+#servicios h1, 
+#videos h1, 
+#contacto h2{
+  margin-top: 8px;
 }
 
 .logo img {
-  width: 120px;
-  height: auto;
+  width: 120px;   /* se ajusta el ancho */
+  height: auto;   /* la altura se calcula sola */
   margin-top: 20px;
   margin-left: 40px;
+  display: block;
 }
 
 .nav ul {
@@ -64,15 +89,17 @@ body { margin: 0; background: var(--page-bg); color: var(--text); font-family: s
   display: flex; gap: 20px;
 }
 .nav a {
-  color: #f3f4f6;
+  color: #fff;               
+  text-shadow: 0 2px 6px rgba(0,0,0,.6); 
   text-decoration: none;
+  margin-left: 20px;
   padding: 8px 12px;
   border-radius: 999px;
-  transition: background .2s ease, color .2s ease, transform .1s ease;
+  transition: 150ms;
 }
 .nav a:hover {
   background: rgba(255,255,255,.12);
-  color: #fff;
+  color: var(--accent, #00e5ff);
   transform: translateY(-1px);
 }
 
@@ -80,12 +107,11 @@ body { margin: 0; background: var(--page-bg); color: var(--text); font-family: s
    Hero con video
 ================================= */
 .hero-section {
-  position: relative;
-  min-height: 100svh;
+  min-height: 100vh;
   display: grid;
   place-items: center;
-  padding-top: 64px;  /* despeje header */
-  overflow: clip;
+  text-align: center;
+  padding: calc(var(--header-h) + 40px) 16px 40px;
 }
 
 #bg-video {
@@ -496,6 +522,7 @@ body { margin: 0; background: var(--page-bg); color: var(--text); font-family: s
   border-top: 1px solid rgba(255,255,255,.06);
   color: #cbd5e1;
   background: linear-gradient(180deg, rgba(18,17,17,.55), rgba(0,0,0,.25) 60%, rgba(0,0,0,0) 100%);
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
 .footer-social {
