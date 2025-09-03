@@ -43,34 +43,77 @@ body {
   font-family: system-ui, Arial, sans-serif;
 }
 
-/* ========================================
-   Header
-======================================== */
+/* ===============================
+   Header fijo y elegante
+================================= */
 .header {
-  position: fixed; inset: 0 0 auto 0;
+  position: fixed;
+  top: 0; left: 0; right: 0;
   height: 150px;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 24px;
-  z-index: 50;
-  background: linear-gradient(180deg, rgba(18,17,17,.55), rgba(0,0,0,.25) 60%, rgba(0,0,0,0) 100%);
-  backdrop-filter: blur(6px);
+  padding: 14px var(--pad-x);
+  background: transparent;                 /* transparente por defecto */
+  border-bottom: 1px solid transparent;    /* sin borde inicial */
+  z-index: 10;
+  transition: background .25s ease, border-color .25s ease, backdrop-filter .25s ease;
 }
-.logo img { width: 120px; height: auto; margin-top: 20px; margin-left: 40px; }
-.nav ul { margin: 0; padding: 0; list-style: none; display: flex; gap: 20px; }
-.nav a{
-  color: #f3f4f6; text-decoration: none; padding: 8px 12px; border-radius: 999px;
-  transition: background .2s, color .2s, transform .1s;
-}
-.nav a:hover{ background: rgba(255,255,255,.12); color:#fff; transform: translateY(-1px); }
 
-/* ========================================
-   Hero
-======================================== */
-.hero-section{
+.header.header--solid{
+  background: rgba(10,16,28,.45);          /* sólido con blur fuera del hero */
+  border-bottom-color: var(--border);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.main-content { 
+  padding-top: var(--header-h);
+}
+
+section[id] { 
+  scroll-margin-top: calc(var(--header-h) + 12px);
+}
+
+.section-title, 
+#drones h1, 
+#servicios h1, 
+#videos h1, 
+#contacto h2{
+  margin-top: 8px;
+}
+
+.logo img {
+  width: 120px;
+  height: auto;
+  margin-top: 20px;
+  margin-left: 40px;
+}
+
+.nav ul {
+  margin: 0; padding: 0; list-style: none;
+  display: flex; gap: 20px;
+}
+.nav a {
+  color: #f3f4f6;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 999px;
+  transition: background .2s ease, color .2s ease, transform .1s ease;
+}
+.nav a:hover {
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* ===============================
+   Hero con video
+================================= */
+.hero-section {
   position: relative;
   min-height: 100svh;
-  display: grid; place-items: center;
-  padding-top: 64px; /* despeje header */
+  display: grid;
+  place-items: center;
+  padding-top: 64px;  /* despeje header */
   overflow: clip;
 }
 #bg-video{
@@ -370,6 +413,7 @@ body {
   border-top: 1px solid rgba(255,255,255,.06);
   color:#cbd5e1;
   background: linear-gradient(180deg, rgba(18,17,17,.55), rgba(0,0,0,.25) 60%, rgba(0,0,0,0) 100%);
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
 .footer-social{
